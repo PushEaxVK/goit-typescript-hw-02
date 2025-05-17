@@ -10,18 +10,18 @@ import ImageModal from './components/ImageModal/ImageModal';
 import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [images, setImages] = useState([]);
-  const [totalPages, setTotalPages] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [query, setQuery] = useState('');
-  const [modalUrl, setModalUrl] = useState('');
-  
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [images, setImages] = useState<object[]>([]);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [query, setQuery] = useState<string>('');
+  const [modalUrl, setModalUrl] = useState<string>('');
+
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    const loadImages = async () => {
+    const controller: AbortController = new AbortController();
+    const signal: AbortSignal = controller.signal;
+    const loadImages = async (): Promise<void> => {
       try {
         if (!query) return;
         setLoading(true);
@@ -34,20 +34,19 @@ function App() {
           setTotalPages(currentPage);
           toast.error('No results!');
         }
-        setImages(prev => [...prev, ...newImages]);
+        setImages((prev) => [...prev, ...newImages]);
       } catch (error) {
         setError(true);
       } finally {
         setLoading(false);
       }
-    }
+    };
     loadImages();
-    
+
     return () => controller.abort();
   }, [query, currentPage]);
 
-
-  function handleQuery(query) {
+  function handleQuery(query: string): void {
     setImages([]);
     setCurrentPage(1);
     setQuery(query);
@@ -56,15 +55,15 @@ function App() {
   return (
     <div className={css.app}>
       <SearchBar onSubmit={handleQuery} />
-      
+
       {images.length > 0 && !error && (
         <ImageGallery images={images} setModal={setModalUrl} />
       )}
-      
+
       {loading && <Loader />}
       {error && <ErrorMessage toast={toast} />}
       {currentPage < totalPages && !error && !loading && (
-        <LoadMoreBtn loadMore={() => setCurrentPage(prev => prev + 1)} />
+        <LoadMoreBtn loadMore={() => setCurrentPage((prev) => prev + 1)} />
       )}
       {modalUrl !== '' && (
         <ImageModal modalUrl={modalUrl} setModal={setModalUrl} />

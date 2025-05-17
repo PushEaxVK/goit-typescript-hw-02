@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import css from './App.module.css';
-import { getImages } from './services/unsplashApi';
+import { getImages } from './services/unsplashApi.ts';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import SearchBar from './components/SearchBar/SearchBar';
 import ImageGallery from './components/ImageGallery/ImageGallery';

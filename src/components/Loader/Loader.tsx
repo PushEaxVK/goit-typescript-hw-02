@@ -1,13 +1,13 @@
-import s from './Loader.module.css';
 import ClipLoader from 'react-spinners/ClipLoader';
+import type { CSSProperties } from 'react';
 
-const override = {
+const override: CSSProperties = {
   display: 'block',
   margin: '0 auto',
   borderColor: 'red',
 };
 
-const Loader = () => {
+const Loader: React.FC = () => {
   return (
     <div>
       <ClipLoader
@@ -20,4 +20,5 @@ const Loader = () => {
     </div>
   );
 };
+
 export default Loader;

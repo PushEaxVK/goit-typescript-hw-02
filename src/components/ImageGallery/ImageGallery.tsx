@@ -5,7 +5,7 @@ import React from 'react';
 
 type Props = {
   images: ImageObject[];
-  setModal: (src: string) => void;
+  setModal: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const ImageGallery = ({ images, setModal }: Props) => {

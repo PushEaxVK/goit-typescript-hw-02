@@ -2,9 +2,14 @@ import { useEffect } from 'react';
 import s from './ImageModal.module.css';
 import Modal from 'react-modal';
 
-const ImageModal = ({ modalUrl, setModal }) => {
+type ImageModalProps = {
+  modalUrl: string;
+  setModal: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const ImageModal = ({ modalUrl, setModal }: ImageModalProps) => {
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setModal('');
       }
@@ -15,21 +20,15 @@ const ImageModal = ({ modalUrl, setModal }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  });
+  }, [setModal]);
 
   return (
-    <div
-      className={s.modal}
-      onClick={(event) => {
-        if (event.target.nodeName !== 'IMG') {
-          setModal('');
-        }
-      }}
-    >
+    <div className={s.modal}>
       <Modal
         isOpen={modalUrl !== ''}
         onRequestClose={() => setModal('')}
-        contentLabel='Big image'
+        contentLabel="Big image"
+        shouldCloseOnOverlayClick={true}
         style={{
           content: {
             top: '50%',
@@ -45,7 +44,13 @@ const ImageModal = ({ modalUrl, setModal }) => {
         <div>
           <img src={modalUrl} />
         </div>
-        <button onClick={() => setModal('')} type='button' style={{position: 'fixed', top: '1rem', right: '1rem'}}>Close</button>
+        <button
+          onClick={() => setModal('')}
+          type="button"
+          style={{ position: 'fixed', top: '1rem', right: '1rem' }}
+        >
+          Close
+        </button>
       </Modal>
     </div>
   );

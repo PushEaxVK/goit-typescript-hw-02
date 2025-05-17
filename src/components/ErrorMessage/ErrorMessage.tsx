@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
-import s from './ErrorMessage.module.css';
+import { toast } from 'react-hot-toast';
 
-const ErrorMessage = ({ toast }) => {
-  const hasFetched = useRef(false);
+const ErrorMessage = () => {
+  const hasFetched = useRef<boolean>(false);
 
   useEffect(() => {
     if (hasFetched.current) return;

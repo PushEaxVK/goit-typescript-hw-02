@@ -62,7 +62,7 @@ function App() {
       )}
 
       {loading && <Loader />}
-      {error && <ErrorMessage toast={toast} />}
+      {error && <ErrorMessage />}
       {currentPage < totalPages && !error && !loading && (
         <LoadMoreBtn loadMore={() => setCurrentPage((prev) => prev + 1)} />
       )}

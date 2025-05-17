@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { toast } from 'react-hot-toast';
 
-const ErrorMessage = () => {
+const ErrorMessage: React.FC = () => {
   const hasFetched = useRef<boolean>(false);
 
   useEffect(() => {

@@ -7,7 +7,10 @@ type ImageModalProps = {
   setModal: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const ImageModal = ({ modalUrl, setModal }: ImageModalProps) => {
+const ImageModal: React.FC<ImageModalProps> = ({
+  modalUrl,
+  setModal,
+}: ImageModalProps) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {

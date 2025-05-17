@@ -5,7 +5,7 @@ type Props = {
   image: ImageObject;
 };
 
-const ImageCard = ({ image }: Props) => {
+const ImageCard: React.FC<Props> = ({ image }: Props) => {
   return (
     <div className={s.imageWrapper} style={{ backgroundColor: image.color }}>
       <img

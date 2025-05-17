@@ -8,7 +8,7 @@ type Props = {
   setModal: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const ImageGallery = ({ images, setModal }: Props) => {
+const ImageGallery: React.FC<Props> = ({ images, setModal }: Props) => {
   const handleClick = (
     e: React.MouseEvent<HTMLUListElement, MouseEvent>
   ): void => {

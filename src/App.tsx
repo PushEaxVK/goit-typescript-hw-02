@@ -44,7 +44,7 @@ function App() {
     };
     loadImages();
 
-    return () => controller.abort();
+    return (): void => controller.abort();
   }, [query, currentPage]);
 
   function handleQuery(query: string): void {

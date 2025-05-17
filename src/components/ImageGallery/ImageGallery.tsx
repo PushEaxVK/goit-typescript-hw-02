@@ -1,17 +1,13 @@
 import s from './ImageGallery.module.css';
 import ImageCard from '../ImageCard/ImageCard';
-import { ImageObject } from '../../services/unsplashApi.types';
 import React from 'react';
+import { ImageClickEvent, ImageGalleryProps } from './ImageGallery.types';
 
-type Props = {
-  images: ImageObject[];
-  setModal: React.Dispatch<React.SetStateAction<string>>;
-};
-
-const ImageGallery: React.FC<Props> = ({ images, setModal }: Props) => {
-  const handleClick = (
-    e: React.MouseEvent<HTMLUListElement, MouseEvent>
-  ): void => {
+const ImageGallery: React.FC<ImageGalleryProps> = ({
+  images,
+  setModal,
+}: ImageGalleryProps) => {
+  const handleClick = (e: ImageClickEvent): void => {
     const target = e.target as HTMLElement;
     if (target.nodeName === 'IMG') {
       if (target.dataset.src) {

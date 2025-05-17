@@ -1,11 +1,7 @@
 import s from './ImageCard.module.css';
-import { ImageObject } from '../../services/unsplashApi.types';
+import { ImageCardProps } from './ImageCard.types';
 
-type Props = {
-  image: ImageObject;
-};
-
-const ImageCard: React.FC<Props> = ({ image }: Props) => {
+const ImageCard: React.FC<ImageCardProps> = ({ image }: ImageCardProps) => {
   return (
     <div className={s.imageWrapper} style={{ backgroundColor: image.color }}>
       <img

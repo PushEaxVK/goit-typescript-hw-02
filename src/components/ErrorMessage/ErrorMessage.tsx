@@ -9,6 +9,7 @@ const ErrorMessage: React.FC = () => {
     hasFetched.current = true;
     toast.error('Network error!');
   }, [toast]);
+
   return <div>Error when serach images!</div>;
 };
 

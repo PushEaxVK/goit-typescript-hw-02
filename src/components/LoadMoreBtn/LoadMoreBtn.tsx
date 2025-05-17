@@ -1,8 +1,5 @@
 import s from './LoadMoreBtn.module.css';
-
-type LoadMoreBtnProps = {
-  loadMore: () => void;
-};
+import { LoadMoreBtnProps } from './LoadMoreBtn.types';
 
 const LoadMoreBtn: React.FC<LoadMoreBtnProps> = ({
   loadMore,
@@ -15,4 +12,5 @@ const LoadMoreBtn: React.FC<LoadMoreBtnProps> = ({
     </div>
   );
 };
+
 export default LoadMoreBtn;

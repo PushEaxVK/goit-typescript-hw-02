@@ -1,11 +1,7 @@
 import { useEffect } from 'react';
 import s from './ImageModal.module.css';
 import Modal from 'react-modal';
-
-type ImageModalProps = {
-  modalUrl: string;
-  setModal: React.Dispatch<React.SetStateAction<string>>;
-};
+import { ImageModalProps } from './ImageModal.types';
 
 const ImageModal: React.FC<ImageModalProps> = ({
   modalUrl,
@@ -20,7 +16,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
 
     window.addEventListener('keydown', handleKeyDown);
 
-    return () => {
+    return (): void => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [setModal]);

@@ -8,11 +8,12 @@ import Loader from './components/Loader/Loader';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import ImageModal from './components/ImageModal/ImageModal';
 import toast, { Toaster } from 'react-hot-toast';
+import { ImageObject } from './services/unsplashApi.types.ts';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const [images, setImages] = useState<object[]>([]);
+  const [images, setImages] = useState<ImageObject[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [query, setQuery] = useState<string>('');
@@ -35,7 +36,7 @@ function App() {
           toast.error('No results!');
         }
         setImages((prev) => [...prev, ...newImages]);
-      } catch (error) {
+      } catch (error: unknown) {
         setError(true);
       } finally {
         setLoading(false);
